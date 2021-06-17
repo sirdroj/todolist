@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+</head>
+<body>
+    <header>
+        <span id="date"></span>
+        <h1>Todo list</h1>
+        <div><input type="text" id="inputdeta"><span><button onclick="addfunction()">add</button></span></div></header>
+        <section class="list">
+            <ul id="todolist">
+                <li>
+                    cleen room
+                </li>
+                <li>
+                 compleate assingments
+                </li>
+                <li>
+                  do laundry
+                </li>
+            </ul>
+        </section>
+</body>
+<script>
+ var dt=new Date().toDateString();
+ document.getElementById("date").innerHTML=dt;
+    var allli=document.getElementsByTagName("li");
+    var i;
+    for(i=0;i<allli.length;i++)
+    {
+        var newdel=document.createElement("span");
+        var del=document.createTextNode("delete");
+        newdel.className="delete";
+        newdel.appendChild(del);
+        allli[i].appendChild(newdel);
+    }
+    var alldel=document.getElementsByClassName("delete");
+    var i;
+    for(i=0;i<alldel.length;i++)
+    {
+        alldel[i].onclick=function(){
+            // this.parentElement.style.display="none";  
+            // this.parentElement.style.display="none";
+            this.parentElement.className="go";
+        }
+    }
+// var 
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function addfunction(){
+    var listdeta=document.getElementById("inputdeta").value;
+    var templi=document.createElement("li");
+    var t=document.createTextNode(listdeta);
+  
+    if(listdeta=="")
+    {
+        alert("you must entre a value");
+    }
+    else
+    {
+        templi.appendChild(t);
+        document.getElementById("todolist").appendChild(templi);
+    }
+    document.getElementById("inputdeta").value="";
+    var newdel=document.createElement("span");
+        var del=document.createTextNode(" delete");
+        newdel.className="delete";
+        newdel.appendChild(del);
+        templi.appendChild(newdel);
+        newdel.onclick=function(){
+            //  this.parentElement.style.display="none";
+            this.parentElement.className="go";
+       }
+}
+function clear(){
+    var t=document.getElementsByTagName("li");
+var i;
+for(i=0;i<t.length;i++){
+    console.log(1);
+    t[i].style.display="none";
+}
+}
+// --------add function end
+
+</script>
+<style>
+    *{
+        padding: 1%;
+        box-sizing: border-box;
+        border-radius: 5%;
+        font-family: ubuntu;
+    }
+    body{
+        margin: 0%;
+        padding: 1%;
+        background-color: rgb(200, 200, 200);
+    }
+    input{
+        width: 70%;
+        margin-right: 0%;
+        border-radius: 10px;
+    }
+    button{
+        border-radius: 10px;
+        width: 10%;
+        margin-left: 0%;
+        background-color: rgb(67, 135, 138);
+    }
+    button:hover{
+        background-color: rgb(102, 149, 150);
+    }
+    button:active{
+        background-color: rgb(57, 98, 99);;
+    }
+    .checked{
+        opacity: 0.5;
+    }
+    .delete{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+       
+        position: relative;
+        height: 100%;
+        min-width: 10%;
+        padding: 0%;
+    border-left: teal solid;
+    border-width: 1px;
+
+    }
+    .delete:hover{
+        /* background-color: rgb(54, 94, 193); */
+        background-color: chocolate;
+    }
+    header{
+        background-color: cadetblue;
+        padding: 0;
+        text-align: center;
+        margin: 0;
+        color: rgb(26, 43, 68);
+    }
+    li{
+    padding: 0%;
+margin: 1%;
+background-color: cadetblue;
+height: 40px;
+font-size: 1.5rem;
+padding-left: 2%;
+    }
+    li:nth-child(2n){
+        /* background-color: yellow; */
+
+    }
+    h1{
+        margin: 0%;
+        justify-content: center;
+    }
+    .go{
+        /* overflow:hidden ; */
+        /* transition:; */
+        /* animation: aman 2s forwards; */
+/* list-style: square; */
+background-color: blueviolet;
+        display: none;
+    }
+    /* @keyframes aman {
+        0%{
+
+        }
+    100%{
+     transform: rotateX(90deg);
+        bacground-color: blue;
+    } */
+        
+
+</style>
+</html>
